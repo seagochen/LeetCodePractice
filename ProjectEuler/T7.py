@@ -13,7 +13,7 @@ if __name__ == "__main__":
     prime_counts = 0
     target_prime = 0
 
-    # search the prime number
+    # search the prime number, and start from 2
     number = 2
     while True:
         # if the number is a prime number, we can add 1 to the prime_counts
