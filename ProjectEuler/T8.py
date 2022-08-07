@@ -70,7 +70,7 @@ if __name__ == "__main__":
             continue
 
         # debug
-        print("found digits: " + sub_digits, end="")
+        # print("found digits: " + sub_digits, end="")
 
         # calculate the product
         product = 1
@@ -78,7 +78,7 @@ if __name__ == "__main__":
             product *= int(digit)
         
         # debug
-        print(" product: " + str(product))
+        # print(" product: " + str(product))
         
         # check if the product is the largest
         if product > largest_product:
