@@ -14,3 +14,37 @@
 // We can see that 28 is the first triangle number to have over five divisors.
 // 
 // What is the value of the first triangle number to have over five hundred divisors?
+
+// import list
+use std::collections::LinkedList;
+
+// compute factors of a given number
+fn factors(n: u64) -> LinkedList<u64> {
+    let mut factors = LinkedList::new();
+    let mut i = 1;
+    while i * i <= n {
+        if n % i == 0 {
+            factors.push_back(i);
+            if i * i != n {
+                factors.push_back(n / i);
+            }
+        }
+        i += 1;
+    }
+    factors
+}
+
+
+fn main() {
+    let mut triangle = 0;
+    let mut i = 1;
+    loop {
+        triangle += i;
+        i += 1;
+        let f = factors(triangle);
+        if f.len() > 500 {
+            println!("{}", triangle);
+            break;
+        }
+    }
+}
