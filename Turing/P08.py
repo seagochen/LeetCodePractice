@@ -1,13 +1,3 @@
-"""
-Example 1:
-Input: nums = [1,2,3,4,3]
-Output: [3, 5]
-
-Example 2:
-Input: nums = [1,2,2]
-Output: [2, 3]
-"""
-
 def findErrorNums(nums):
     # Find the duplicate number
     for i in range(len(nums)):
