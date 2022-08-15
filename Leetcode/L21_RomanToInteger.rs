@@ -39,68 +39,68 @@ Output: 1994
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 */
 
-impl Solution {
-    pub fn roman_to_int(s: String) -> i32 {
-        // reverse the array and convert the string to char array
-        let mut chars: Vec<char> = s.chars().collect();
+fn roman_to_int(s: String) -> i32 {
+    // reverse the array and convert the string to char array
+    let mut chars: Vec<char> = s.chars().collect();
 
-        // create a hashmap to store the roman numerals
-        let mut roman_map = std::collections::HashMap::new();
+    // create a hashmap to store the roman numerals
+    let mut roman_map = std::collections::HashMap::new();
 
-        roman_map.insert('I', 1);
-        roman_map.insert('V', 5);
-        roman_map.insert('X', 10);
-        roman_map.insert('L', 50);
-        roman_map.insert('C', 100);
-        roman_map.insert('D', 500);
-        roman_map.insert('M', 1000);
+    roman_map.insert('I', 1);
+    roman_map.insert('V', 5);
+    roman_map.insert('X', 10);
+    roman_map.insert('L', 50);
+    roman_map.insert('C', 100);
+    roman_map.insert('D', 500);
+    roman_map.insert('M', 1000);
 
-        // create a variable to store the result
-        let mut result = 0;
-        let mut i = 0;
+    // create a variable to store the result
+    let mut result = 0;
+    let mut i = 0;
 
-        // loop through the char array
-        while i < chars.len() {
-            // if the current char is I and the next char is V or X
-            if chars[i] == 'I' && (i + 1 < chars.len()) && (chars[i + 1] == 'V' || chars[i + 1] == 'X') {
-                // add the value of the next char to the result
-                result += roman_map.get(&chars[i + 1]).unwrap();
-                // subtract the value of the current char from the result
-                result -= roman_map.get(&chars[i]).unwrap();
-                // increment i by 2
-                i += 2;
-            // if the current char is X and the next char is L or C
-            } else if chars[i] == 'X' && (i + 1 < chars.len()) && (chars[i + 1] == 'L' || chars[i + 1] == 'C') {
-                // add the value of the next char to the result
-                result += roman_map.get(&chars[i + 1]).unwrap();
-                // subtract the value of the current char from the result
-                result -= roman_map.get(&chars[i]).unwrap();
-                // increment i by 2
-                i += 2;
-            // if the current char is C and the next char is D or M
-            } else if chars[i] == 'C' && (i + 1 < chars.len()) && (chars[i + 1] == 'D' || chars[i + 1] == 'M') {
-                // add the value of the next char to the result
-                result += roman_map.get(&chars[i + 1]).unwrap();
-                // subtract the value of the current char from the result
-                result -= roman_map.get(&chars[i]).unwrap();
-                // increment i by 2
-                i += 2;
-            // if the current char is not I, X or C
-            } else {
-                // add the value of the current char to the result
-                result += roman_map.get(&chars[i]).unwrap();
-                // increment i by 1
-                i += 1;
-            }
+    // loop through the char array
+    while i < chars.len() {
+        // if the current char is I and the next char is V or X
+        if chars[i] == 'I' && (i + 1 < chars.len()) && (chars[i + 1] == 'V' || chars[i + 1] == 'X') {
+            // add the value of the next char to the result
+            result += roman_map.get(&chars[i + 1]).unwrap();
+            // subtract the value of the current char from the result
+            result -= roman_map.get(&chars[i]).unwrap();
+            // increment i by 2
+            i += 2;
+        // if the current char is X and the next char is L or C
+        } else if chars[i] == 'X' && (i + 1 < chars.len()) && (chars[i + 1] == 'L' || chars[i + 1] == 'C') {
+            // add the value of the next char to the result
+            result += roman_map.get(&chars[i + 1]).unwrap();
+            // subtract the value of the current char from the result
+            result -= roman_map.get(&chars[i]).unwrap();
+            // increment i by 2
+            i += 2;
+        // if the current char is C and the next char is D or M
+        } else if chars[i] == 'C' && (i + 1 < chars.len()) && (chars[i + 1] == 'D' || chars[i + 1] == 'M') {
+            // add the value of the next char to the result
+            result += roman_map.get(&chars[i + 1]).unwrap();
+            // subtract the value of the current char from the result
+            result -= roman_map.get(&chars[i]).unwrap();
+            // increment i by 2
+            i += 2;
+        // if the current char is not I, X or C
+        } else {
+            // add the value of the current char to the result
+            result += roman_map.get(&chars[i]).unwrap();
+            // increment i by 1
+            i += 1;
         }
-
-        // return the result
-        result
     }
 
-    // run the code
-    fn main() {
-        println!("{}", roman_to_int("MCMXCIV".to_string()));
-    }
+    // return the result
+    result
 }
 
+
+fn main (){
+    println!("{}", roman_to_int("MCMXCIV".to_string())); // 1994
+    println!("{}", roman_to_int("LVIII".to_string())); // 58
+    println!("{}", roman_to_int("III".to_string())); // 3
+    println!("{}", roman_to_int("DCXXI".to_string())); // 621
+}
