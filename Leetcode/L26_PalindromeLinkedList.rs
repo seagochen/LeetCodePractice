@@ -30,12 +30,13 @@ Output: false
 impl Solution {
     pub fn is_palindrome(head: Option<Box<ListNode>>) -> bool {
         let mut res = vec![];
-        while let Some(node) = head { 
+        let mut head_temp = head;
+        while let Some(node) = head_temp { 
             res.push(node.val);
-            head = node.next
+            head_temp = node.next;
         }
         let mut tmp = res.clone();
         tmp.reverse();
-        tmp == res;
+        tmp == res
     }
 }
