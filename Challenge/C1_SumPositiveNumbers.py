@@ -55,8 +55,10 @@ def sum_pos(input: list, sum: int = 0):
     number = input.pop(0)
 
     # if the number is positive, then append it to the output
-    if number > 0:
+    if number > 0 and number <= 100:
         sum += number**2
+    elif number > 100:
+        sum += 100**2
 
     return sum_pos(input, sum)
 
@@ -64,9 +66,13 @@ def sum_pos(input: list, sum: int = 0):
 def sum_of_positive_integers(input: list, output: list):
     if len(input) == 0:
         return output
-    
+
     # pop out the first element of the input
     case = input.pop(0)
+
+    # if the length of case is greater than 100, then we will trim it
+    if len(case) > 100:
+        case = case[:100]
 
     # create a list of positive integers from the case
     result = sum_pos(case)
@@ -76,12 +82,20 @@ def sum_of_positive_integers(input: list, output: list):
 
 
 def main():
-    # estimate the number of lines need to be read
-    lines = 2 * int(stdin.readline())
+    # read the number of lines from the first line
+    lines = int(stdin.readline())
 
+    # if the line is negative, then we will exit the program
     if lines <= 0:
         print("Number of cases must be positive and greater than 0")
         return
+    
+    # if the number of lines is greater than 100, then we will trim it
+    if lines > 100:
+        lines = 100
+    
+    # estimate the number of lines need to be read
+    lines = 2 * lines
 
     # load input from stdin
     inputs = read_input_from_std([], lines)
