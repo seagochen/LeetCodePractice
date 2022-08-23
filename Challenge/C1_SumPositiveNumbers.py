@@ -7,10 +7,17 @@ def convert_to_int_list(str_list: list, int_list: list):
         return int_list
 
     # pop out the first element of the list
-    number = int(str_list.pop(0))
+    number = prevent_error_int(str_list.pop(0))
     int_list.append(number)
 
     return convert_to_int_list(str_list, int_list)
+
+
+def prevent_error_int(str_input):
+    try:
+        return int(str_input)
+    except ValueError:
+        return 0
 
 
 def read_input_from_std(inputs: list, lines: int, cases: int = 0):
@@ -36,7 +43,7 @@ def read_input_from_std(inputs: list, lines: int, cases: int = 0):
         inputs.append(input)
 
     # if current number of line is odd, then next input is cases
-    cases = int(input) if lines % 2 == 1 else 0
+    cases = prevent_error_int(input) if lines % 2 == 1 else 0
     return read_input_from_std(inputs, lines, cases)
 
 
