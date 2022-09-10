@@ -33,6 +33,8 @@ Explanation: Initially s = "???????".
 - Place stamp at index 1 to get "aabcaca".
 """
 
+from typing import List
+
 class Solution:
     def movesToStamp(self, stamp: str, target: str) -> List[int]:
         tmp = target
